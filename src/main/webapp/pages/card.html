@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Invitation Cards</title>
+    <link rel="stylesheet" href="../assets/css/card.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/search.css">
+  </head>
+  <script>
+    // let icard = [
+    //   {
+    //     img: "../assets/images/set_collection_luxury_wedding_invitation_cards_template.jpg",
+    //     alt: "supreme",
+    //     heading: "Supreme Printers",
+    //     rating: 7,
+    //     location: "Velachery",
+    //     contact: 9080776789,
+    //     bookNow: "Book Now",
+    //   },
+
+    //   {
+    //     img: "../assets/images/4156064.jpg",
+    //     alt: "grand",
+    //     heading: "Grand Prints",
+    //     rating: 9,
+    //     location: "Pallavaram",
+    //     contact: 8097776789,
+    //     bookNow: "Book Now",
+    //   },
+
+    //   {
+    //     img: "../assets/images/4187205.jpg",
+    //     alt: "card",
+    //     heading: "Card Creators",
+    //     rating: 5,
+    //     location: "Ashok Pillar",
+    //     contact: 8123476789,
+    //     bookNow: "Book Now",
+    //   },
+
+    //   {
+    //     img: "../assets/images/rm300-invitation-katie-05.jpg",
+    //     alt: "wedding",
+    //     heading: "Wedding Cards",
+    //     rating: 10,
+    //     location: "Tambaram",
+    //     contact: 9080776789,
+    //     bookNow: "Book Now",
+    //   },
+
+    //   {
+    //     img: "../assets/images/4225425.jpg",
+    //     alt: "masters",
+    //     heading: "Printing Masters",
+    //     rating: 6,
+    //     location: "Thiruvanmiyur",
+    //     contact: 9080779854,
+    //     bookNow: "Book Now",
+    //   },
+    // ];
+
+    // let icard = JSON.parse(localStorage.getItem("updates"));
+  </script>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <!-- <a href="..//index.html" -->
+            ><img alt="image" src="../assets/images/Redefine.png"
+          /></a>
+        </div>
+
+        <ul>
+          <div class="container">
+            <input placeholder="Type to search..." required="" class="input" id="searchbar" name="text" type="text">
+            <div class="icon">
+                <svg viewBox="0 0 512 512" class="ionicon" xmlns="http://www.w3.org/2000/svg">
+                    <title>Search</title>
+                    <path stroke-width="32" stroke-miterlimit="10" stroke="currentColor" fill="none" d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z"></path>
+                    <path d="M338.29 338.29L448 448" stroke-width="32" stroke-miterlimit="10" stroke-linecap="round" stroke="currentColor" fill="none"></path>
+                </svg>
+            </div>
+        </div>
+          <!-- <input type="text" id="searchbar" class="input"
+          style="background-color: black;
+          padding: 12px 17px;
+          border: none;
+          border-radius: 20px;"> -->
+          <li>
+            <a href="../pages/about.html">About Us</a>
+          </li>
+          <!-- <li>
+            <a href="../pages/sign-up.html">Sign up</a>
+          </li>
+          <li>
+            <a href="../pages/login.html">Login</a>
+          </li> -->
+          <!-- <li>
+            <a href="../pages/userprofile.html">Profile</a>
+          </li> -->
+        </ul>
+        <!-- <form action="./pages/sign-up.html">
+          <button class="signin">Sign Up</button>
+        </form>
+        <form action="./pages/login.html">
+          <button class="signin">Log in</button>
+        </form>
+        <form action="./pages/userprofile.html">
+          <button class="signin">Profile</button>
+        </form> -->
+      </nav>
+    </header>
+
+    <!-- <div class="main">
+      <div class="main-div">
+        <div>
+          <img
+            class="card-pic"
+            alt="supreme"
+            src="../assets/images/set_collection_luxury_wedding_invitation_cards_template.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="main-content">
+        <h1>Supreme Printers</h1>
+        <h3>Rating:7 Stars</h3>
+        <h3>Location:Velachery</h3>
+        <h3>Contact:9080776789</h3>
+      </div>
+      <div class="btn">
+        <a href="http://127.0.0.1:5500/pages/i-details.html">
+          <button class="book-now-btn">Book Now</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="main-div">
+        <div>
+          <img
+            class="card-pic"
+            alt="grand"
+            src="../assets/images/4156064.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="main-content">
+        <h1>Grand Prints</h1>
+        <h3>Rating:9 Stars</h3>
+        <h3>Location:Pallavaram</h3>
+        <h3>Contact:8097776789</h3>
+      </div>
+      <div class="btn">
+        <a href="http://127.0.0.1:5500/pages/grand-prints.html"
+          ><button class="book-now-btn">Book Now</button></a
+        >
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="main-div">
+        <div>
+          <img
+            class="card-pic"
+            alt="card"
+            src="../assets/images/4187205.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="main-content">
+        <h1>Card Creators</h1>
+        <h3>Rating:5 Stars</h3>
+        <h3>Location:Ashok Pillar</h3>
+        <h3>Contact:8123476789</h3>
+      </div>
+      <div class="btn">
+        <a href="http://127.0.0.1:5500/pages/card-creators.html"
+          ><button class="book-now-btn">Book Now</button></a
+        >
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="main-div">
+        <div>
+          <img
+            class="card-pic"
+            alt="wedding"
+            src="../assets/images/rm300-invitation-katie-05.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="main-content">
+        <h1>Wedding Cards</h1>
+        <h3>Rating:10 Stars</h3>
+        <h3>Location:Tambaram</h3>
+        <h3>Contact:9080776789</h3>
+      </div>
+      <div class="btn">
+        <a href="http://127.0.0.1:5500/pages/wedding-cards.html"
+          ><button class="book-now-btn">Book Now</button></a
+        >
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="main-div">
+        <div>
+          <img
+            class="card-pic"
+            alt="masters"
+            src="../assets/images/4225425.jpg"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="main-content">
+        <h1>Printing Masters</h1>
+        <h3>Rating:6 Stars</h3>
+        <h3>Location:Thiruvanmiyur</h3>
+        <h3>Contact:9080779854</h3>
+      </div>
+      <div class="btn">
+        <a href="http://127.0.0.1:5500/pages/printing-masters.html"
+          ><button class="book-now-btn">Book Now</button></a
+        >
+      </div>
+    </div> -->
+    
+    <!-- <div>
+      <label for="surname">Last Name</label><br />
+      <input
+        type="text"
+        class="surname"
+        id="surname"
+        placeholder=" enter your surname"
+      /><br />
+    </div> -->
+
+
+    <script>
+      let create_card = JSON.parse(localStorage.getItem("printingpress"));
+      console.log(create_card);
+
+      // let icard = create_card.filter((h) => h.Catagory == "Card");
+      // console.log(icard);
+      // console.log(icard.length);
+
+      for (let i = 0; i < icard.length; i++) {
+        let main = document.createElement("div");
+        main.setAttribute("class", "main");
+
+        let main_div = document.createElement("div");
+        main_div.setAttribute("class", "main-div");
+        main.append(main_div);
+
+        let MT_div = document.createElement("div");
+        main_div.append(MT_div);
+
+        let card_pic = document.createElement("img");
+        card_pic.setAttribute("class", "card-pic");
+        card_pic.setAttribute("alt", "image");
+        card_pic.setAttribute("src", icard[i]["shopimage"]);
+        MT_div.append(card_pic);
+
+        let main_content = document.createElement("div");
+        main_content.setAttribute("class", "main-content");
+        main.append(main_content);
+
+        let main_content_h1 = document.createElement("h1");
+        main_content_h1.innerText = icard[i]["shopname"];
+        main_content.append(main_content_h1);
+
+        // let main_content_h3 = document.createElement("h3");
+        // main_content_h3.innerText = icard[i]["rating"];
+        // main_content.append(main_content_h3);
+
+        let main_content_h3_2 = document.createElement("h3");
+        main_content_h3_2.innerText = icard[i]["location"];
+        main_content.append(main_content_h3_2);
+
+        let main_content_h3_3 = document.createElement("h3");
+        main_content_h3_3.innerText = icard[i]["contact"];
+        main_content.append(main_content_h3_3);
+
+        let btn = document.createElement("div");
+        btn.setAttribute("class", "btn");
+        main.append(btn);
+
+        let btn_a = document.createElement("a");
+        btn_a.setAttribute("href", "i-details.html?name=" + icard[i]["printer_name"] );
+        btn.append(btn_a);
+
+        let btn_Button = document.createElement("a");
+        btn_Button.setAttribute("class", "book-now-btn");
+        btn_Button.setAttribute("href", "i-details.html?name=" + icard[i]["printer_name"] );
+        btn_Button.innerText = "Book Now";
+        btn_a.append(btn_Button);
+
+        document.querySelector("body").append(main);
+      }
+      let searchbar = document.getElementById("searchbar");
+const cards = document.getElementsByClassName("main");
+
+searchbar.addEventListener("input", () => {
+  for (let i = 0; i < cards.length; i++) {
+    const element = cards[i];
+    if (
+      element.innerHTML.toLowerCase().includes(searchbar.value.toLowerCase())
+    ) {
+      element.style.display = "flex";
+    } else {
+      element.style.display = "none";
+    }
+  }
+});
+    </script>
+  </body>
+</html>

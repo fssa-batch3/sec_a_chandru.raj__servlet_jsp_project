@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/register-form.css" />
+  </head>
+  <body>
+    <form id="form">
+      <div class="namesurflex">
+        <div>
+          <label for="name">Name</label><br />
+          <input
+            type="text"
+            class="name"
+            id="name"
+            placeholder=" enter your name"
+            required
+          /><br />
+        </div>
+        <!-- <div>
+          <label for="surname">Last Name</label><br />
+          <input
+            type="text"
+            class="surname"
+            id="surname"
+            placeholder=" enter your surname"
+          /><br />
+        </div> -->
+      </div>
+      ​ <label for="emailid">Email ID</label><br />
+      <input
+        type="email"
+        class="emailid"
+        id="emailid"
+        placeholder=" enter your Email ID"
+        required
+      /><br />
+      <label for="mobilenumber">Mobile Number</label><br />
+      <input
+        type="tel"
+        class="mobilenumber"
+        id="mobilenumber"
+        placeholder=" enter your mobilenumber"
+        required
+        pattern="[0-9]{10}"
+      /><br />
+      <label for="addressline1">Address</label><br />
+      <textarea
+        type="text"
+        id="address"
+        name="w3review"
+        rows="4"
+        cols="50"
+        class="addressline1"
+        placeholder=" enter your address"
+        required
+      ></textarea
+      ><br />
+      <!-- <input
+          type="text"
+          class="addressline1"
+          id="address"
+          placeholder=" enter your address"
+        /><br /> -->
+
+      <!-- <label for="state">State</label><br />
+        <input
+          type="text"
+          class="state"
+          id=""
+          placeholder=" enter your State"
+        /><br /> -->
+      <label for="area">City</label><br />
+      <input
+        type="text"
+        class="area"
+        id="area"
+        placeholder=" enter your City"
+        required
+      /><br />
+
+      <!-- <label for="Country">Country</label><br />
+      <select name="" id="countries">
+        Select Country
+      </select>
+      <br />
+      <label for="State">State</label><br />
+      <select name="" id="state">
+        Select State
+      </select>
+      <br /> -->
+      <label for="birthday">Booking Date:</label>
+      <input
+        type="date"
+        min="2023-01-01"
+        max="2030-01-01"
+        min="2022"
+        id="birthday"
+        name="birthday"
+        required
+      /><br />
+      <!-- <input type="submit" /> -->
+      <button class="submit" onclick="redirect()" type="submit">Submit</button>
+
+      <button class="submit" id="delete" onclick="redirect()" type="reset">
+        back
+      </button>
+
+      <!-- <button class="noselect"><span class="text">Delete</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span></button>          ​ -->
+    </form>
+
+    <script>
+      document.getElementById("delete").addEventListener("click", (e) => {
+        window.location.href = "i-details.html";
+      });
+      let register = document.querySelector("#form");
+      console.log(register);
+      register.addEventListener("submit", function (e) {
+        e.preventDefault();
+        // Get the values of the form fields
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("emailid").value;
+        let mobile = document.getElementById("mobilenumber").value;
+        let address = document.getElementById("address").value;
+        let city = document.getElementById("area").value;
+        let date = document.getElementById("birthday").value;
+        let bookingform = [];
+        let validate = {
+          name,
+          email,
+          mobile,
+          address,
+          city,
+          date,
+        };
+        // console.log(validate);
+        if (
+          localStorage.getItem("bookingdata") === null ||
+          localStorage.getItem("bookingdata") === undefined
+        ) {
+          bookingform.push(validate);
+
+          window.localStorage.setItem(
+            "bookingdata",
+            JSON.stringify(bookingform)
+          );
+          window.location.href = "hall-booking.html";
+          // Regular expression patterns for validation
+        } else {
+          let newdata = JSON.parse(localStorage.getItem("bookingdata"));
+          newdata.push(validate);
+
+          window.localStorage.setItem("bookingdata", JSON.stringify(newdata));
+          window.location.href = "hall-booking.html";
+        }
+      });
+    </script>
+  </body>
+</html>

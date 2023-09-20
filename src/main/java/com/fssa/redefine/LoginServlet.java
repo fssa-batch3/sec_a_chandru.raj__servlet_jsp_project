@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.fssa.project.dao.UserDAO;
+import com.fssa.project.exception.DAOException;
 import com.fssa.project.exception.ServiceException;
 import com.fssa.project.model.User;
 import com.fssa.project.service.UserService;
@@ -30,17 +32,31 @@ public class LoginServlet extends HttpServlet {
 		User user = new User();
 		user.setEmail(email);
 		user.setPassword(password);
-
+     
 		try {
 
 			if (userService.loginUser(user)) {
 
-				RequestDispatcher patcher = request.getRequestDispatcher("home.jsp");
+				//RequestDispatcher patcher = request.getRequestDispatcher("home.jsp");
 				HttpSession session = request.getSession();
    
 				session.setAttribute("loggedUser", email);
+            
+				try {
+					int type = UserDAO.findTypeByEmail(email);
 
-				patcher.forward(request, response);
+					if (type == 1) {
+						response.sendRedirect(request.getContextPath() + "home.jsp");
+					} else if (type == 0) {
+						response.sendRedirect("userhome.jsp");
+					}
+				} catch (DAOException e) {
+					// Handle the exception (e.g., log it or show an error message)
+					e.printStackTrace();
+				}		
+				
+				
+				//patcher.forward(request, response);
 
 			}else {
 				response.getWriter().print("Invalid email or password");

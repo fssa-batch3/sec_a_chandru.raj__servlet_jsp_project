@@ -1,0 +1,149 @@
+<!DOCTYPE html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/sellar-form.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="inputBox">
+      <input id="hallImageUrl" type="text" value="../assets/images/set_collection_luxury_wedding_invitation_cards_template.jpg" name=""  />
+      <span>Hall-Image Url</span>
+    </div>
+    <div class="inputBox">
+      <input id="dininghallImageurl" type="text" value="../assets/images/set_collection_luxury_wedding_invitation_cards_template.jpg" name=""  />
+      <span>Dining-Hall-Img Url</span>
+    </div>
+    <div class="inputBox">
+      <input id="bridgeImageUrl" type="text" value="../assets/images/set_collection_luxury_wedding_invitation_cards_template.jpg" name=""  />
+      <span>Bride-Room Url</span>
+    </div>
+    <div class="inputBox">
+      <input id="groomImageUrl" type="text" value="../assets/images/set_collection_luxury_wedding_invitation_cards_template.jpg" name=""  />
+      <span>Groom-Room Url</span>
+    </div>
+    <div class="inputBox">
+      <input id="parkingImageUrl" type="text" value="../assets/images/set_collection_luxury_wedding_invitation_cards_template.jpg" name=""  />
+      <span>Parking-Image Url</span>
+    </div>
+    <div class="inputBox">
+      <input id="hallName" value="test hall" type="text" name=""  />
+      <span>Hall Name</span>
+    </div>
+    <div class="inputBox">
+      <input id="capacity" type="number" value="555" name=""  />
+      <span>Capacity</span>
+    </div>
+    <div class="inputBox">
+      <input id="price" type="number" value="777" name=""  />
+      <span>Pricing</span>
+    </div>
+    <div class="inputBox">
+      <input id="location" type="text" value="chennai" name=""  />
+      <span>Location</span>
+    </div>
+    <div class="inputBox">
+      <input id="contact" type="number" value="1234567890" required/>
+      <span>Contact</span>
+    </div>
+      ​
+      <button type="submit" id="edit" class="btn5">Edit</button>
+      <button type="submit" onclick="del()" id="edit" class="btn5">
+        Delete
+      </button>
+    </form>
+  </body>
+
+  <script>
+    const printerId = JSON.parse(localStorage.getItem("halls"));
+    console.log("printerID" + printerId);
+    let url = window.location.search;
+    let urlParams = new URLSearchParams(url);
+    let id = urlParams.get("id");
+    console.log("id" + id);
+
+    const found = printerId.find((element) => element.hallId == id);
+    console.log(found);
+
+          let hallImageUrl= document.getElementById("hallImageUrl");
+          let dininghallImageurl = document.getElementById("dininghallImageurl");
+          let bridgeImageUrl = document.getElementById("bridgeImageUrl");
+          let groomImageUrl = document.getElementById("groomImageUrl");
+          let parkingImageUrl = document.getElementById("parkingImageUrl");
+          let hallName = document.getElementById("hallName");
+          let capacity = document.getElementById("capacity");
+          let location1 = document.getElementById("location");
+          let contact = document.getElementById("contact");
+          let price = document.getElementById("price");
+
+    hallImageUrl.value  = found["hallImageUrl"];
+    dininghallImageurl.value  = found["dininghallImageurl"];
+    bridgeImageUrl.value  = found["bridgeImageUrl"];
+    groomImageUrl.value  = found["groomImageUrl"];
+    parkingImageUrl.value  = found["parkingImageUrl"];
+    hallName.value =found["hallName"]
+    capacity.value  = found["capacity"];
+    location1.value = found["location"];
+    price.value  = found["price"];
+    contact.value =found["contact"]
+
+    let edit = document.getElementById("edit");
+    edit.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      let hallImageUrl= document.getElementById("hallImageUrl").value;
+          let dininghallImageurl = document.getElementById("dininghallImageurl").value;
+          let bridgeImageUrl = document.getElementById("bridgeImageUrl").value;
+          let groomImageUrl = document.getElementById("groomImageUrl").value;
+          let parkingImageUrl = document.getElementById("parkingImageUrl").value;
+          let hallName = document.getElementById("hallName").value;
+          let capacity = document.getElementById("capacity").value;
+          let location1 = document.getElementById("location").value;
+          let contact = document.getElementById("contact").value;
+          let price = document.getElementById("price").value;
+
+      let newObject = {
+        hallImageUrl:hallImageUrl,
+        dininghallImageurl:dininghallImageurl,
+        groomImageUrl:groomImageUrl,
+        parkingImageUrl:parkingImageUrl,
+        hallName:hallName,
+        capacity:capacity,
+        location1:location,
+        contact:contact,
+        price:price,
+        // image_url: img1,
+        // printer_name: printer_name1,
+        // rating: rating1,
+        // location: location2,
+        // contact: contact1,
+      };
+      console.log(found);
+      console.log(newObject);
+
+      let edit_card = Object.assign(found, newObject);
+      let index = printerId.indexOf(found);
+
+      printerId[index] = edit_card;
+
+      localStorage.setItem("halls", JSON.stringify(printerId));
+      location.href = "admin-hall.html";
+    });
+
+    function del() {
+      let index = printerId.indexOf(found);
+      let msg = confirm("Are you sure you want to delete this card");
+      if (msg == true) {
+        printerId.splice(index, 1);
+        console.log(printerId);
+        localStorage.setItem("halls", JSON.stringify(printerId));
+        location.href = "admin-hall.html";
+        return;
+      } else {
+        return;
+      }
+    }
+    // find.index
+  </script>
+</html>

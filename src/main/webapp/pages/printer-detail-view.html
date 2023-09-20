@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="../assets/css/halls.css" /> -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/hall-detail.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <a href="#">
+            <img alt="image" src="../assets/images/Redefine.png" />
+          </a>
+        </div>
+
+        <ul>
+          <li>
+            <a href="../pages/about.html">About Us</a>
+          </li>
+          <li>
+            <a href="../pages/userprofile.html">Profile</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="container">
+        <div class="card">
+          <div class="name" id="name">Chan Hall</div>
+          <img
+            id="hall-img"
+            src="../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg"
+            alt="image"
+          />
+          <p class="capacity" id="capacity">Capacity</p>
+        </div>
+        <div class="address">
+          <h2>Address</h2>
+          <div class="add" id="add">
+            <p>1/2, Kumar st, checkpost, Velacher, Chennai-600042</p>
+          </div>
+          <div class="pricing">
+            <h2>Pricing</h2>
+            <p id="price">15000 Perday rent</p>
+          </div>
+          <div class="btn">
+            <button type="submit" class="btn5">View contact</button>
+
+            <button type="submit" class="btn5">Check Availibilty</button>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="grid-container">
+          <div class="images">
+            <img
+              src="../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg"
+              alt="image"
+              id="img1"
+            />
+          </div>
+          <div class="images">
+            <img
+              src="../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg"
+              alt="image"
+              id="img2"
+            />
+          </div>
+          <div class="images">
+            <img
+              src="../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg"
+              alt="image"
+              id="img3"
+            />
+          </div>
+          <div class="images">
+            <img
+              src="../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg"
+              alt="image"
+              id="img4"
+            />
+          </div>
+          <div class="images">
+            <img
+              src="../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg"
+              alt="image"
+              id="img5"
+            />
+          </div>
+          <div class="images">
+            <img
+              src="../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg"
+              alt="image"
+              id="img6"
+            />
+          </div>
+        </div>
+        <div class="btn">
+          <a type="submit" class="btn5" id="btn1">Edit</a>
+          <button type="submit" class="btn5">Delete</button>
+          <button type="submit" class="btn5">Back</button>
+        </div>
+      </section>
+    </main>
+    <script>
+      let url = window.location.search;
+      console.log(url);
+
+      let urlParams = new URLSearchParams(url);
+
+      let getid = urlParams.get("id");
+      console.log(getid);
+
+      let press = JSON.parse(localStorage.getItem("printingpress"));
+      let currentUserId = JSON.parse(localStorage.getItem("details"));
+      let filteredPress = press.filter((F) => F.ownerId == currentUserId);
+      console.log(filteredPress);
+
+      let findpress = filteredPress.find((press) => press.pressId == getid);
+      console.log(findpress);
+
+      document.getElementById("hall-img").src = findpress.hallImageUrl;
+      document.getElementById("name").innerText = findpress.hallName;
+      document.getElementById("capacity").innerText =
+        "Capacity : " + findpress.capacity;
+      document.getElementById("add").innerText = findpress.location;
+      document.getElementById("price").innerText = findpress.price;
+
+      document.getElementById("img1").src = findpress.parkingImageUrl;
+      document.getElementById("img2").src = findpress.bridgeImageUrl;
+      document.getElementById("img3").src = findpress.dininghallImageurl;
+      document.getElementById("img4").src = findpress.groomImageUrl;
+      document.getElementById("img5").src = findpress.hallImageUrl;
+    </script>
+  </body>
+</html>

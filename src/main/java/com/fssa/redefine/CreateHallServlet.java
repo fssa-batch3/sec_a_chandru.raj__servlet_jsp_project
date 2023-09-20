@@ -34,15 +34,29 @@ public class CreateHallServlet extends HttpServlet {
         String hallName = request.getParameter("hallName");
         String hallLocation = request.getParameter("hallLocation");
         String mobileNumber = request.getParameter("mobileNumber");
-    
+        String capacity = request.getParameter("capacity");
+        String pricing = request.getParameter("pricing");
+        String url = request.getParameter("url");
+        String url1 = request.getParameter("url1");
+        String url2 = request.getParameter("url2");
+        String url3 = request.getParameter("url3");
+        String url4 = request.getParameter("url4");
+        String url5 = request.getParameter("url5");
+        String url6 = request.getParameter("url6");
+        
         
         // Validate hall data
-		HallValidator.validateHall(hallName);
-		HallValidator.validateHallLocation(hallLocation);
-		HallValidator.validateMobileNumber(mobileNumber);
-         
+		HallValidator.isValidHallName(hallName);
+		HallValidator.isValidLocation(hallLocation);
+		HallValidator.isValidMobileNumber(mobileNumber);
+		HallValidator.isValidImageURL(url);
+		HallValidator.isValidCapacity(capacity);
+		HallValidator.isValidPricing(pricing);
+		
+		
+		
 		// Convert request parameters to Hall object
-		Hall hall = new Hall(hallName, hallLocation, mobileNumber);
+		Hall hall = new Hall(hallName, hallLocation, mobileNumber,capacity, pricing,url, url1, url2,url3, url4, url5, url6);
 
 		// Store hall data
 		HallService hallService = new HallService();

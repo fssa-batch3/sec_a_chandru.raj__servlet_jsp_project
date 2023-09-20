@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/sign-up.css" />
+  </head>
+  <body>
+    <!-- this page is represented by the logi page -->
+    <form id="register">
+      <div class="all">
+        <div class="main">
+          <div class="all-1">
+            <!-- to show logo -->
+            <div class="logo">
+              <img
+                class="photo"
+                src="../assets/images/Redefine-removebg-preview.png"
+                alt="image"
+              />
+            </div>
+            <!-- to represent logi page -->
+            <div class="para">
+              <div>
+                <h1>Sign up here</h1>
+              </div>
+              <div class="name">
+                <p>Full name</p>
+                <input
+                  type="Name"
+                  id="name"
+                  class="test"
+                  placeholder="Name"
+                  autocomplete="gghgjhfv"
+                  title="Name is required"
+                  pattern="[a-zA-Z]{1,32}"
+                  required
+                  value="Chandru"
+                />
+              </div>
+              <div class="email">
+                <p>Email address</p>
+                <input
+                  type="email"
+                  id="email"
+                  class="test"
+                  placeholder="email"
+                  autocomplete="gghgjhfv"
+                  required
+                />
+              </div>
+              <div class="password">
+                <p>Enter-password</p>
+                <input
+                  type="password"
+                  id="password"
+                  class="test"
+                  placeholder="password"
+                  autocomplete="gghgjhfv"
+                  required
+                  title="Password required"
+                  pattern="[a-zA-Z]{8,12}"
+                />
+              </div>
+
+              <div class="password">
+                <p>Confirm-password</p>
+                <input
+                  type="password"
+                  id="confirm-password"
+                  placeholder="password"
+                  autocomplete="gghgjhfv"
+                  class="test"
+                  pattern="[a-zA-Z]{8,12}"
+                  required
+                  title=" Password required"
+                />
+              </div>
+              <div class="select">
+                <select name="Catagory" id="Catagory">
+                  <option value="Buyer">Customer</option>
+                  <option value="Sellar">Service</option>
+                </select>
+              </div>
+              <!-- to represent button -->
+              <div class="button">
+                <!-- <button class="btn1">Forgot password?</button> -->
+
+                <button type="submit" class="btn1">Submit</button>
+              </div>
+
+              <!-- <div class="sign">
+                <a href="./sign-in.html">Don't have an account ?</a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        push,
+        onValue,
+        set,
+      } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyB7V99R5CJzjz9B-QAO30SVqljp3DbpB8I",
+        authDomain: "redefine-95809.firebaseapp.com",
+        projectId: "redefine-95809",
+        storageBucket: "redefine-95809.appspot.com",
+        messagingSenderId: "656557256648",
+        appId: "1:656557256648:web:05839256c72bc882f55afd",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+      let database = getDatabase();
+
+      const starCountRef = ref(database, "name/");
+      onValue(starCountRef, (snapshot) => {
+        const data = snapshot.val();
+        console.log(data);
+      });
+    </script>
+    <script>
+      let register = document.querySelector("#register");
+      console.log(register);
+
+      register.addEventListener("submit", function (e) {
+        e.preventDefault();
+        // console.log("chandru");
+
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        console.log(email);
+        let password = document.getElementById("password").value.trim();
+        let confirmpassword = document
+          .getElementById("confirm-password")
+          .value.trim();
+        let Catagory = document.getElementById("Catagory").value.trim();
+        let id = Date.now();
+        let arr = [];
+        let chan = {
+          email,
+          password,
+          name,
+          id,
+          Catagory,
+          address: "Enter your address",
+          state: "Enter your state",
+          area: "Enter your city",
+        };
+        // chan[password] = pass;
+
+        console.log(chan);
+        //  console.log("chandru");
+        if (password != confirmpassword) {
+          alert("password not match try again");
+          return;
+        }
+
+        let match = false;
+        let array = JSON.parse(localStorage.getItem("local"));
+
+        if (array !== null) {
+          for (let i = 0; i < array.length; i++) {
+            // if (arr[i]["email"] === email) {
+            if (email === array[i].email) {
+              match = true;
+              break;
+            }
+            // else {
+            //   match = false;
+            // }
+          }
+        }
+
+        if (match === true) {
+          alert("Email id already exist");
+          return;
+        }
+
+        if (
+          localStorage.getItem("local") === null ||
+          localStorage.getItem("local") === undefined
+        ) {
+          arr.push(chan);
+
+          window.localStorage.setItem("local", JSON.stringify(arr));
+          window.location.href = "./login.html";
+          // alert("success");
+        } else {
+          let dataArr = JSON.parse(localStorage.getItem("local"));
+          dataArr.push(chan);
+
+          window.localStorage.setItem("local", JSON.stringify(dataArr));
+          window.location.href = "./login.html?user=" + id;
+        }
+        // window.location.href = "./login.html";
+      });
+      // else {
+      //   if(lo)
+      //   let str = JSON.stringify(arr);
+      //   localStorage.setItem("local", str);
+      // alert("success");
+      //   location.href = "./login.html";
+      // }
+    </script>
+  </body>
+</html>

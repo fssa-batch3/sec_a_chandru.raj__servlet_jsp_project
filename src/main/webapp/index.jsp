@@ -4,7 +4,8 @@
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<style>* {
+<style>
+* {
   margin: 0;
   padding: 0;
 }
@@ -270,10 +271,11 @@ a {
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
 	crossorigin="anonymous"></script>
+    
 <meta charset="ISO-8859-1">
 <title>Redefine</title>
 </head>
-<body>
+<body style="background-color: black;">
 	<jsp:include page="header.jsp"></jsp:include>
 	
    	
@@ -289,9 +291,9 @@ a {
         </div>
 
         <ul>
-          <li>
+         <!--   <li>
             <a href="./about.html">About Us</a>
-          </li>
+          </li> -->
           <li>
             <a href="./signup.html">Sign up</a>
           </li>
@@ -320,7 +322,7 @@ a {
       <div class="hero">
         <img
           alt="image"
-          src="./images/Redefine__2_-removebg-preview.png"
+          src="./assets/images/Redefine__2_-removebg-preview.png"
         />
       </div>
 
@@ -344,7 +346,7 @@ a {
           <div class="hall-img">
             <img
               alt="image"
-              src="./images/gourmet-table-white-dish-catering.jpg"
+              src="./assets/images/gourmet-table-white-dish-catering.jpg"
             />
           </div>
         </div>
@@ -359,7 +361,7 @@ a {
           <div class="hall-img">
             <img
               alt="image"
-              src="./images/set_collection_luxury_wedding_invitation_cards_template.jpg"
+              src="./assets/images/set_collection_luxury_wedding_invitation_cards_template.jpg"
             />
           </div>
         </div>

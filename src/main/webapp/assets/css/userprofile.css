@@ -1,0 +1,151 @@
+.namesurflex,
+.countrystateflex {
+  display: flex;
+  gap: 20px;
+}
+
+.wholeprofilecontainer {
+  background-color: goldenrod;
+  width: 650px;
+  margin-top: 100px;
+  margin-left: 450px;
+  display: flex;
+}
+.bdy {
+  background-color: black;
+}
+​ .userimground {
+  margin-left: 100px;
+  margin-top: 70px;
+  cursor: pointer;
+}
+.username {
+  font-family: "Poppins", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  position: relative;
+  right: 20px;
+  margin-left: 100px;
+  cursor: pointer;
+}
+.useremail {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  position: relative;
+  right: 45px;
+  margin-left: 100px;
+  cursor: pointer;
+}
+.userdetails {
+  margin-top: 5px;
+  margin-left: 50px;
+}
+.profileh1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+}
+label {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+}
+input {
+  width: 250px;
+  height: 30px;
+  padding: 5px;
+}
+.submit {
+  width: 150px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #0069d9;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  transition: all 0.3s ease-in-out;
+  margin-top: 20px;
+  margin-left: 200px;
+  cursor: pointer;
+}
+.submit:hover {
+  transform: scale(0.9);
+}
+.userexperience {
+  margin-left: 50px;
+  margin-top: 5px;
+}
+.thirdcolumnh1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+}
+textarea {
+  width: 250px;
+  height: 100px;
+}
+button {
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: red;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  /* background: #e62222; */
+}
+
+button,
+button span {
+  transition: 200ms;
+}
+
+button .text {
+  transform: translateX(35px);
+  color: white;
+  font-weight: bold;
+}
+
+button .icon {
+  position: absolute;
+  border-left: 1px solid #c41b1b;
+  transform: translateX(110px);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button svg {
+  width: 15px;
+  fill: #eee;
+}
+
+button:hover {
+  background: #ff3636;
+}
+
+button:hover .text {
+  color: transparent;
+}
+
+button:hover .icon {
+  width: 150px;
+  border-left: none;
+  transform: translateX(0);
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active .icon svg {
+  transform: scale(0.8);
+}

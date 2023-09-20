@@ -17,26 +17,28 @@ import com.fssa.project.exception.ServiceException;
 
 @WebServlet("/listHallsServlet")
 public class ListHallsServlet extends HttpServlet {
-    private HallService taskService;
+    private HallService hallService;
 
     @Override
     public void init() throws ServletException {
         super.init();
-        HallDAO hallDAO = new HallDAO();
-        HallService hallservice= new HallService();
+        hallService = new HallService();
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            // Retrieve the list of tasks from the database using the TaskService or TaskDAO
-            List<Hall> hallList = HallService.getAllHalls(); // Replace with the appropriate method
+            // Retrieve the list of halls from the database using the HallService
+            List<Hall> hallList = hallService.getAllHalls();
 
-            // Set the list of tasks as an attribute in the request
+            // Set the list of halls as an attribute in the request
             request.setAttribute("hallList", hallList);
+            
+            System.out.println("list1");
 
             // Forward the request to the JSP page for rendering
             request.getRequestDispatcher("/list.jsp").forward(request, response);
+            
         } catch (ServiceException e) {
             e.printStackTrace();
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

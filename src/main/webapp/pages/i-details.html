@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/h-detail.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <!-- <a href="..//index.html" -->
+            ><img alt="image" src="../assets/images/Redefine.png"
+          /></a>
+        </div>
+
+        <ul>
+          <li>
+            <a href="../pages/about.html">About Us</a>
+          </li>
+          <!-- <li>
+            <a href="../pages/sign-up.html">Sign up</a>
+          </li>
+          <li>
+            <a href="../pages/login.html">Login</a>
+          </li> -->
+          <li>
+            <a href="../pages/userprofile.html">Profile</a>
+          </li>
+        </ul>
+        <!-- <form action="./pages/sign-up.html">
+          <button class="signin">Sign Up</button>
+        </form>
+        <form action="./pages/login.html">
+          <button class="signin">Log in</button>
+        </form>
+        <form action="./pages/userprofile.html">
+          <button class="signin">Profile</button>
+        </form> -->
+      </nav>
+    </header>
+    <section>
+      <!-- hall pic h-div -->
+      <div class="main">
+        <div class="h-div">
+          <img
+            class="h-pic"
+            id="image"
+            alt="image"
+            src="../assets/images/set_collection_luxury_wedding_invitation_cards_template.jpg"
+          />
+        </div>
+        <!-- section content -->
+
+        <div class="content-container">
+          <div class="h-content">
+            <div class="cont">
+              <h1 id="h1">Supreme Printers</h1>
+              <h3 id="rating">Rating:7 Stars</h3>
+              <h3 id="location">Location:Velachery</h3>
+              <h3 id="contact">Contact:9080776789</h3>
+            </div>
+            <div class="cont">
+              <h1 id="available">Availbility</h1>
+              <h3>
+                <ul>
+                  <li id="trend_card">Trending Cards</li>
+                  <li id="custom">Customised</li>
+                  <li id="quality">Good Quality</li>
+                  <li id="offers">Exiting Offers</li>
+                </ul>
+              </h3>
+            </div>
+          </div>
+          <div class="second-div-container">
+            <div class="second-section-para-div">
+              <div class="para">
+                <h2 id="review">Reviews</h2>
+                <br />
+
+                <p id="content">
+                  The Supreme Printers are very great printers that they
+                  designed a very luxury and trending and nice Invitation for my
+                  daughter's marriage and there offers were too cool and I
+                  ddefinitely vist Supreme Printers for my Son's Marriage also
+                </p>
+              </div>
+            </div>
+            <!-- button btn-div -->
+            <div class="btn-div">
+              <a href="registration-form.html"
+                ><button class="btn">Book Now</button></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      window.onload = function(){
+      const c_id = window.location.search;
+      const c_params = new URLSearchParams(c_id);
+      const get_details = c_params.get("name");
+      console.log(get_details);
+      // get data from localStorage
+      let all = JSON.parse(localStorage.getItem("updates"));
+      console.log("all");
+      let selectedUser = all.find(function (event) {
+        let invitation_id = event["printer_name"];
+        if (get_details == invitation_id) {
+          return true;
+        }
+      });
+      // console.log(selectedUser);
+      // // get value from page
+      let image = document.getElementById("image");
+      let h1 = document.getElementById("h1");
+      let rating = document.getElementById("rating");
+      let location = document.getElementById("location");
+      let contact = document.getElementById("contact");
+
+      image.setAttribute("src", selectedUser["image_url"]);
+      h1.innerText = selectedUser["printer_name"];
+      rating.innerText = selectedUser["rating"];
+      location.innerText = selectedUser["location"];
+      contact.innerText = selectedUser["contact"];
+    }
+    </script>
+  </body>
+</html>
+
+
+

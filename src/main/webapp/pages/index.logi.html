@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redefine</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/footer.css" />
+    <script
+      src="https://kit.fontawesome.com/09613bf4ed.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <!-- This code for navbar -->
+    <header>
+      <nav>
+        <div class="logo">
+          <!-- <a href="..//index.html" -->
+            ><img alt="image" src="../assets/images/Redefine.png"
+          /></a>
+        </div>
+
+        <ul>
+          <li>
+            <a href="../pages/about.html">About Us</a>
+          </li>
+          <!-- <li>
+            <a href="../pages/sign-up.html">Sign up</a>
+          </li>
+          <li>
+            <a href="../pages/login.html">Login</a>
+          </li> -->
+          <li>
+            <a href="../pages/userprofile.html">Profile</a>
+          </li>
+        </ul>
+        <!-- <form action="./pages/sign-up.html">
+          <button class="signin">Sign Up</button>
+        </form>
+        <form action="./pages/login.html">
+          <button class="signin">Log in</button>
+        </form>
+        <form action="./pages/userprofile.html">
+          <button class="signin">Profile</button>
+        </form> -->
+      </nav>
+    </header>
+    <!-- For logo and selecting halls -->
+    <section>
+      <div class="hero">
+        <img
+          alt="image"
+          src="../assets/images/Redefine__2_-removebg-preview.png"
+        />
+      </div>
+
+      <div class="main">
+        <div class="hall-h1"><h1>HALLS</h1></div>
+        <div class="halls">
+          <div class="hall-img">
+            <img
+              alt="image"
+              src="../assets/images/celebration-hall-with-full-guests.jpg"
+            />
+          </div>
+        </div>
+        <div class="adiv hall-more">
+      View More
+        </div>
+      </div>
+      <div class="main">
+        <div class="hall-h1"><h1>Catering Services</h1></div>
+        <div class="halls">
+          <div class="hall-img">
+            <img
+              alt="image"
+              src="../assets/images/gourmet-table-white-dish-catering.jpg"
+            />
+          </div>
+        </div>
+        <div class="adiv">
+          <a class="a" href="../pages/cattering.html">View More</a>
+        </div>
+      </div>
+
+      <div class="main">
+        <div class="hall-h1"><h1>Invitation Cards</h1></div>
+        <div class="halls">
+          <div class="hall-img">
+            <img
+              alt="image"
+              src="../assets/images/set_collection_luxury_wedding_invitation_cards_template.jpg"
+            />
+          </div>
+        </div>
+        <div class="adiv">
+          <a class="a" href="../pages/card.html">View More</a>
+        </div>
+      </div>
+    </section>
+    <!-- The footer part -->
+    <footer class="foot">
+      <div class="row">
+        <div class="col">
+          <img alt="logo" class="logo" src="../assets/images/Redefine.png" />
+          <p>
+            Redefine the System which where our website totaly guide the user to
+            completely run their full Marriage Event such as showing the user to
+            choose their Marriage Halls,to choose thier cattering services and
+            show them the Invitaion Printing press
+          </p>
+        </div>
+        <div class="col-1">
+          <h3>Office</h3>
+          <p>Vandikaran Road</p>
+          <p>Velacher Chennai</p>
+          <p>Time:9am-10pm</p>
+          <h4>91 - 7098654678</h4>
+        </div>
+        <div class="col-1">
+          <h3>Links</h3>
+          <ul>
+            <li><a href="">home</a></li>
+            <li><a href="">about</a></li>
+            <li><a href="">contact</a></li>
+          </ul>
+        </div>
+        <div class="col-1">
+          <h3>Our Medias</h3>
+          <div class="social-icons">
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-whatsapp"></i>
+            <i class="fa-brands fa-pinterest"></i>
+            <i class="fa-brands fa-twitter"></i>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <link rel="stylesheet" href="../pages/halls.html">
+  </body>
+
+  <script> 
+  
+  let userUrl = window.location.search
+
+let urlParameter = new URLSearchParams(userUrl)
+
+let getUserId = urlParameter.get("user")
+console.log(getUserId)
+
+   let hallMore = document.querySelector(".hall-more")
+
+   hallMore.addEventListener("click", () => {
+
+    window.location.href = "../pages/halls.html?user=" + getUserId
+    
+   })
+   </script>
+</html>

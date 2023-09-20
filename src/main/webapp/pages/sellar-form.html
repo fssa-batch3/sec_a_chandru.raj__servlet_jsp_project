@@ -1,0 +1,112 @@
+<!DOCTYPE html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/sellar-form.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="form">
+      <div class="inputBox">
+        <input id="hallImageUrl" type="text" value="https://img.weddingbazaar.com/shaadisaga_production/photos/pictures/006/385/812/new_large/ss20230328-19331-rl9ayj.jpg?1679994498" name=""  />
+        <span>Hall-Image Url</span>
+      </div>
+      <div class="inputBox">
+        <input id="dininghallImageurl" type="text" value="https://img.weddingbazaar.com/shaadisaga_production/photos/pictures/006/386/128/new_large/ss20230328-19331-1indxgf.jpg?1679994531" name=""  />
+        <span>Dining-Hall-Img Url</span>
+      </div>
+      <div class="inputBox">
+        <input id="bridgeImageUrl" type="text" value="https://img.weddingbazaar.com/shaadisaga_production/photos/pictures/006/386/117/new_large/ss20230328-19331-w46w62.jpg?1679994552" name=""  />
+        <span>Bride-Room Url</span>
+      </div>
+      <div class="inputBox">
+        <input id="groomImageUrl" type="text" value="https://img.weddingbazaar.com/shaadisaga_production/photos/pictures/006/385/854/new_large/ss20230328-19331-1kewks6.jpg?1679994501" name=""  />
+        <span>Groom-Room Url</span>
+      </div>
+      <div class="inputBox">
+        <input id="parkingImageUrl" type="text" value="https://img.weddingbazaar.com/shaadisaga_production/photos/pictures/006/386/144/new_large/ss20230328-19331-11xzjrb.jpg?1679994533" name=""  />
+        <span>Parking-Image Url</span>
+      </div>
+      <div class="inputBox">
+        <input id="hallName" value="Vani Mahal" type="text" name=""  />
+        <span>Hall Name</span>
+      </div>
+      <div class="inputBox">
+        <input id="capacity" type="number" value="275" name=""  />
+        <span>Capacity</span>
+      </div>
+      <div class="inputBox">
+        <input id="price" type="number" value="1,30,000" name=""  />
+        <span>Pricing</span>
+      </div>
+      <div class="inputBox">
+        <input id="location" type="text" value="1/2, Perumal street, Gandhi Nagar, Madipakkam, Chennai-600013" name=""  />
+        <span>Location</span>
+      </div>
+      <div class="inputBox">
+        <input id="contact" type="number" value="9876752345" required/>
+        <span>Contact</span>
+      </div>
+     
+      ​
+      <button type="submit" class="btn5">Send</button>
+    </form>
+    <script>
+
+
+      document
+        .getElementById("form")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          if(document.getElementById("contact").value.length != 10){
+           return alert("Contact should have only 10 charecters")
+          }  
+          let all = [];
+          if (localStorage.getItem("halls") != null) {
+            all = JSON.parse(localStorage.getItem("halls"));
+            // console.log(all);
+          }
+
+          // let mail = JSON.parse(localStorage.getItem("details"));
+          // let local = JSON.parse(localStorage.getItem("local"));
+          // let get_data = local.find(function (L) {
+          //   return L.email == mail;
+          // });
+          
+          // console.log(get_data);
+
+          let hallImageUrl= document.getElementById("hallImageUrl").value;
+          let dininghallImageurl = document.getElementById("dininghallImageurl").value;
+          let bridgeImageUrl = document.getElementById("bridgeImageUrl").value;
+          let groomImageUrl = document.getElementById("groomImageUrl").value;
+          let parkingImageUrl = document.getElementById("parkingImageUrl").value;
+          let hallName = document.getElementById("hallName").value;
+          let capacity = document.getElementById("capacity").value;
+          let location = document.getElementById("location").value;
+          let contact = document.getElementById("contact").value;
+          let price = document.getElementById("price").value;
+
+          // let Catagory = document.getElementById("Catagory").value;
+          let ownerId = JSON.parse(localStorage.getItem("details"));
+          let hallId = Date.now();
+
+          let halls = {
+            hallImageUrl,
+            dininghallImageurl,bridgeImageUrl,groomImageUrl,parkingImageUrl,hallName,capacity,location,contact,price,hallId,ownerId
+          };
+          // console.log(all);
+          all.push(halls);
+          let allStr = JSON.stringify(all);
+
+          localStorage.setItem("halls", allStr);
+          admin_update();
+          // location.href = "../pages/hollywood.html";
+        });
+
+      function admin_update() {
+        location.href = "index2.html";
+      }
+    </script>
+  </body>
+</html>

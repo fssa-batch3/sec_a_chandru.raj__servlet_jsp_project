@@ -286,7 +286,7 @@ a {
             </div> </a>
            </li>
           <li>
-            <a href="../pages/about.html">About Us</a>
+            <a href="./aboutus.jsp">About Us</a>
           </li>
           <li>
             <a href="LogoutServlet">Log Out</a>
@@ -319,7 +319,7 @@ a {
       <div class="hero">
         <img
           alt="image"
-          src="./images/Redefine__2_-removebg-preview.png"
+          src="./assets/images/Redefine__2_-removebg-preview.png"
         />
       </div>
 
@@ -329,7 +329,7 @@ a {
           <div class="hall-img">
             <img
               alt="image"
-              src="./images/celebration-hall-with-full-guests.jpg"
+              src="./assets/images/celebration-hall-with-full-guests.jpg"
             />
           </div>
         </div>
@@ -343,7 +343,7 @@ a {
           <div class="hall-img">
             <img
               alt="image"
-              src="./images/gourmet-table-white-dish-catering.jpg"
+              src="./assets/images/gourmet-table-white-dish-catering.jpg"
             />
           </div>
         </div>
@@ -358,7 +358,7 @@ a {
           <div class="hall-img">
             <img
               alt="image"
-              src="./images/set_collection_luxury_wedding_invitation_cards_template.jpg"
+              src="./assets/images/set_collection_luxury_wedding_invitation_cards_template.jpg"
             />
           </div>
         </div>

@@ -26,17 +26,27 @@ public class RegisterServlet extends HttpServlet {
             throws ServletException, IOException {
     	
         String name = request.getParameter("name");
-        String gender = request.getParameter("gender");
+        
         String phoneNumber = request.getParameter("phoneNumber");
-        String dateOfBirthStr = request.getParameter("dateOfBirth");
+        
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String type = request.getParameter("userType");
+        int setType = 0;
+        if (type.equals("User")) {
+            setType = 0;
+        } else if (type.equals("Seller")) {
+            setType = 1;
+        }
+        System.out.print(type);
+
+        
 
         try {
             // Convert dateOfBirthStr to LocalDate if needed
-            LocalDate dateOfBirth = LocalDate.parse(dateOfBirthStr); // Example format: "yyyy-MM-dd"
+             // Example format: "yyyy-MM-dd"
             
-            User user = new User(name, gender, phoneNumber, dateOfBirth, email, password);
+            User user = new User(name, phoneNumber, email, password, setType);
             UserService userService = new UserService();
             try {
 				userService.createUser(user);

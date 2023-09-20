@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile</title>
+    <link rel="stylesheet" href="userprofile.css" />
+    <link rel="stylesheet" href="homepage.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="../assets/css/userprofile.css" />
+    ​
+  </head>
+  ​
+  <body class="bdy">
+    <div class="wholeprofilecontainer">
+    
+      <div class="userdetails">
+        <h1 class="profileh1">User Profile</h1>
+        <form id="form">
+          <div class="namesurflex">
+            <div>
+              <label for="name">Name</label><br />
+              <input
+                type="text"
+                class="name"
+                id="name"
+                placeholder=" enter your name"
+              /><br />
+            </div>
+           
+          </div>
+          ​ <label for="emailid">User ID</label><br />
+          <input
+            type=""
+            class="emailid"
+            id="emailid"
+            placeholder=" enter your User ID"
+          /><br />
+          <label for="mobilenumber">Mobile Number</label><br />
+          <input
+            type="number"
+            class="mobilenumber"
+            id="mobilenumber"
+            placeholder=" enter your mobilenumber"
+          /><br />
+          <label for="addressline1">Address</label><br />
+          <textarea type="text" id="address" name="w3review" rows="4" cols="50" class="addressline1" placeholder=" enter your address"></textarea><br/>
+          <!-- <input
+            type="text"
+            class="addressline1"
+            id="address"
+            placeholder=" enter your address"
+          /><br /> -->
+        
+         
+          <!-- <label for="state">State</label><br />
+          <input
+            type="text"
+            class="state"
+            id=""
+            placeholder=" enter your State"
+          /><br /> -->
+          <label for="area">City</label><br />
+          <input
+            type="text"
+            class="area"
+            id="area"
+            placeholder=" enter your City"
+          /><br />
+
+          <label for="Country">Country</label><br />
+          <select name="" id="countries">
+            Select Country
+          </select>
+                <br>
+                <label for="State">State</label><br />
+          <select name="" id="state">
+            Select State
+          </select>
+                <br>
+          <button class="submit" type="submit" >
+            Submit
+          </button>
+
+          <button class="submit" id="delete" type="submit" >
+            Log Out
+          </button>
+
+          <!-- <button class="noselect"><span class="text">Delete</span><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"></path></svg></span></button>          ​ -->
+        </form>
+      </div>
+      ​ ​
+     
+      </div>
+      ​ ​
+    </div>
+    ​ ​ ​
+    <script>
+
+      
+
+        // const data = JSON.parse(window.localStorage.getItem("details"))
+
+        
+        // const name =document.getElementById("name");
+        // const email =document.getElementById("emailid");
+        
+
+       
+        // email.value=data["email"];
+        // name.value=data["name"];
+        const countryArr = document.getElementById("countries");
+const stateArr = document.getElementById("state");
+
+const authToken = getToken()
+console.log(authToken);
+async function getData(endpoint) {
+  const token = await authToken
+  const response = await fetch(`https://www.universal-tutorial.com/api/${endpoint}`, {
+    method: "GET",
+    headers: {
+      "Authorization": `Bearer ${token.auth_token}`
+        ,
+      "Accept": "application/json",
+    },
+  });
+  const data = await response.json();
+  return data;
+}
+async function getToken() {
+  const response = await fetch(`https://www.universal-tutorial.com/api/getaccesstoken`, {
+    method: "GET",
+    headers: {
+      "api-token":
+        "NQJgTaPzrnUZQJOvJ4eimD57MLSHeTsPn0sRiq9kRUkmcO3c1t5G1J5F-CjhDnKOifQ",
+      "Accept": "application/json",
+      "user-email": "ajmal@gmail.com"
+    },
+  });
+  const data = await response.json();
+  return data;
+}
+async function showData() {
+  const dataArr = await getData("countries");
+  const stateList = await getData(`states/${dataArr[0]["country_name"]}`);
+  let option;
+  
+  for (const element of dataArr) {
+    option = document.createElement("option");
+
+    option.value = element["country_name"];
+    option.text = element["country_name"];
+    countryArr.appendChild(option);
+  }
+  for (const element of stateList) {
+    option = document.createElement("option");
+    option.value = element["state_name"];
+    option.text = element["state_name"];
+    stateArr.appendChild(option);
+  }
+  
+}
+showData();
+countryArr.addEventListener("change", async () => {
+  const dataArr = await getData(`states/${countryArr.value}`);
+  stateArr.innerHTML = "";
+
+  for (const element of dataArr) {
+    var option = document.createElement("option");
+    option.value = element["state_name"];
+    option.text = element["state_name"];
+    stateArr.appendChild(option);
+  }
+});
+stateArr.addEventListener("change", async () => {
+  const dataArr = await getData(`cities/${stateArr.value}`);
+  districtArr.innerHTML = "";
+
+  for (const element of dataArr) {
+    var option = document.createElement("option");
+    option.value = element["city_name"];
+    option.text = element["city_name"];
+    districtArr.appendChild(option);
+  }
+});
+
+      const user_email = JSON.parse(window.localStorage.getItem("details"))
+      const user_details = JSON.parse(window.localStorage.getItem("local"))
+      let get_obj = user_details.find(function(user_obj){
+        let check_email = user_obj["id"]
+        if(user_email===check_email){
+          return true ;
+        }
+      });
+      console.log(get_obj)
+      const fname = document.getElementById("name");
+      // let surname = document.getElementById("surname")
+      const mail = document.getElementById("emailid");
+   
+      fname.value =  get_obj["name"] ;
+      mail.value  =  user_email ;
+      // surname.value = 
+
+
+      let form = document.getElementById("form");
+      form.addEventListener("submit" , function(event){
+      event.preventDefault()
+      let fname = document.getElementById("name").value;
+      // let surname = document.getElementById("surname").value;
+      let mail = document.getElementById("emailid").value;
+      let phone = document.getElementById("mobilenumber").value;
+      let address= document.getElementById("address").value;
+      let state = document.getElementById("state").value;
+      let area = document.getElementById("area").value;
+      
+     
+      let new_data = {
+        fname,
+        mail,
+        phone,
+        address, 
+        state,
+        area,
+       
+      };
+      // if( mail.value != user_email ){
+      //   alert("You can't change the email-id")
+      //   return
+      // }
+    let updates = Object.assign(get_obj,new_data);
+    console.log(updates);
+    let index = user_details.indexOf(get_obj)
+    // console.log(index);
+    user_details[index] = updates;
+    localStorage.setItem("local", JSON.stringify(user_details))
+    alert("You have successfully updated your account details!");
+    location.reload()
+    });
+
+
+
+
+    // const user_email = JSON.parse(window.localStorage.getItem("details"))
+    let check = true;
+    const presend_details = JSON.parse(window.localStorage.getItem("local"))
+      let get_presend = user_details.find(function(user_obj){
+        let check_email = user_obj["id"]
+        if(user_email===check_email){
+      let fname1 = document.getElementById("name");
+      // let lname1 = document.getElementById("surname");
+      let mail1 = document.getElementById("emailid");
+      let phone1 = document.getElementById("mobilenumber");
+      let address1 = document.getElementById("address");
+      let state1 = document.getElementById("state");
+      let country1 = document.getElementById("area");
+
+      console.log(user_obj["address"])
+     
+      fname1.value  = user_obj["name"];
+      // lname1.value  = user_obj["surname"];
+      mail1.value  = user_obj["email"];
+      phone1.value  = user_obj["phone"];
+      address1.value  = user_obj["address"];
+      state1.value  = user_obj["state"];
+      country1.value  = user_obj["area"];
+      console.log(user_obj);
+        }
+      });
+
+      
+      let delete_user = document.getElementById("delete")
+      delete_user.addEventListener("click" , function(event){
+      event.preventDefault()
+      let index = user_details.indexOf(get_obj)
+    let msg =  confirm("Are you sure you want to delete this account")
+      if(msg !== true){
+        return
+      } else{
+        user_details.splice(index,1)
+        console.log(user_details);
+        localStorage.setItem("local",JSON.stringify(user_details))
+        window.location.href ="../pages/sign-up.html";
+      }
+    });
+        
+      
+    </script>
+  </body>
+  <link href="">
+</html>

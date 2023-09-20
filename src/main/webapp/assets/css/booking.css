@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+}
+.pic {
+  width: 600px;
+  height: 300px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 2px solid goldenrod;
+  box-shadow: 0px 0px 15px white;
+}
+.pic-div {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.hp-div {
+  display: flex;
+  text-align: center;
+  width: 1000px;
+  margin: auto;
+
+  margin-top: 50px;
+
+  flex-direction: column;
+}

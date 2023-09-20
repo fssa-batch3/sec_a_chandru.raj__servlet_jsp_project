@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/halls.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <body>
+    <header>
+        <nav>
+          <div class="logo">
+
+              <img alt="image" src="../assets/images/Redefine.png"
+            /></a>
+          </div>
+  
+          <ul>
+            <li>
+              <a href="../pages/about.html">About Us</a>
+            </li>
+            
+           
+            <li>
+              <a href="../pages/userprofile.html">Profile</a>
+            </li>
+
+          </ul>
+         
+        </nav>
+      </header>
+
+      <main>
+        <section>
+          <div class="cards">
+            <!-- <div class="card">
+                 <img src="../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg" alt="image">
+                 <div class="name">Chan Hall</div>
+                 <a href="">View More</a>
+                </div>
+                <div class="card">
+                  <img src="../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg" alt="image">
+                  <div class="name">Chan Hall</div>
+                  <a href="">View More</a>
+                 </div>
+                 <div class="card">
+                  <img src="../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg" alt="image">
+                  <div class="name">Chan Hall</div>
+                  <a href="">View More</a>
+                 </div>
+
+                 <div class="card">
+                  <img src="../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg" alt="image">
+                  <div class="name">Chan Hall</div>
+                  <a href="">View More</a>
+                 </div>
+                 <div class="card">
+                   <img src="../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg" alt="image">
+                   <div class="name">Chan Hall</div>
+                   <a href="">View More</a>
+                  </div>
+                  <div class="card">
+                   <img src="../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg" alt="image">
+                   <div class="name">Chan Hall</div>
+                   <a href="">View More</a>
+                  </div> -->
+          </div>
+        </section>
+      </main>
+      <script>
+        
+        let halls =JSON.parse(localStorage.getItem("halls"));
+        let currentUserId =JSON.parse(localStorage.getItem("details"));
+        let filteredHalls  = halls.filter((F) => F.ownerId == currentUserId);
+        console.log(filteredHalls);
+
+       for(let i =0;i<filteredHalls.length;i++){
+        let card = document.createElement("a");
+        card.setAttribute("class","card");
+        card.setAttribute("href","hall-detail-view.html?id=" + filteredHalls[i]["hallId"]);
+        card.innerHTML = ` <img src="${filteredHalls[i]["hallImageUrl"]}" alt="image">
+                   <div class="name">${filteredHalls[i]["hallName"]}</div>
+                   <a>View More</a>`;
+        document.querySelector(".cards").append(card);
+
+       }
+
+
+       
+      </script>
+  </body>
+</html>

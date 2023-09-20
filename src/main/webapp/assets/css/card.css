@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.main {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  align-items: center;
+  border: 2px solid goldenrod;
+  border-radius: 10px;
+}
+.main-div {
+  display: flex;
+  flex: 1;
+}
+
+.card-pic {
+  width: 400px;
+  height: 250px;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  box-shadow: 0px 0px 10px goldenrod;
+}
+.main-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.btn {
+  display: flex;
+  flex: 1;
+  text-decoration: none;
+}
+.book-now-btn {
+  margin-right: 100px;
+  padding: 12px 17px;
+  background-color: goldenrod;
+}
+
+.card_pic {
+  width: 400px;
+  height: 250px;
+  margin-top: 5px;
+  margin-left: -490px;
+  margin-bottom: 5px;
+  box-shadow: 0px 0px 10px goldenrod;
+}
+
+.btn a {
+  text-decoration: none;
+}

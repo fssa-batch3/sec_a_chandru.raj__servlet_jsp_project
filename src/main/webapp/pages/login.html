@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/login.css" />
+  </head>
+  <body>
+
+    <body>
+      <!-- this page is represented by the logi page -->
+      <div class="all">
+        <div class="main">
+          <div class="all-1">
+            <!-- to show logo -->
+            <div class="logo">
+              <img
+                class="photo"
+                src="../assets/images/Redefine-removebg-preview.png"
+                alt="image"
+              />
+            </div>
+            <!-- to represent logi page -->
+            <form class="para">
+              <div>
+                <h1>Login Here</h1>
+              </div>
+
+              <div class="email">
+                <p>Email address</p>
+                
+                <input
+                  type="email"
+                  id="email"
+                  class="test"
+                  placeholder="email"
+                  autocomplete="gghgjhfv"
+                  required
+                  value="champ@gmail.com"
+                
+                />
+              </div>
+              <div class="password">
+                <p>Enter-password</p>
+                
+                <input
+                  type="password"
+                  class="test"
+                  id="password"
+                  placeholder="password"
+                  autocomplete="gghgjhfv"
+                 
+                  required
+                  title=" Password required"
+                  value="qwertyuiop"
+                   
+             
+                />
+              </div>
+              <!-- to represent button -->
+              <div class="button">
+                <button class="btn1">Forgot password?</button>
+                <a><button class="btn1" type="submit">login</button></a>
+              </div>
+
+          
+            </form>
+            <div class="sign">
+              <a href="../pages/sign-up.html">Don't have an account ?</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+
+// Here find the url users
+
+let userUrl = window.location.search
+
+let urlParameter = new URLSearchParams(userUrl)
+
+let getUserId = urlParameter.get("user")
+console.log(getUserId)
+
+
+        let logForm = document.querySelector(".para")
+
+
+        logForm.addEventListener("submit", (e)=> {
+
+      
+          e.preventDefault()
+          
+          const email1 = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+
+          const champ = localStorage.getItem("local");
+          const obj = JSON.parse(champ);
+
+          console.log(email1)
+          console.log(obj);
+          const tofind = obj.find((h) => h["email"] == email1);
+
+          console.log(tofind)
+
+
+          if (tofind !== undefined && tofind !== null) {
+
+            console.log(tofind["password"])
+
+
+            if(tofind["email"] !== email1){
+              alert("user not exist")
+            }
+
+            else if (tofind["password"] !== password) {
+              alert("Password is wrong")
+              return
+            } 
+
+            else {
+              alert("Succesfully loged in");
+              localStorage.setItem("details", JSON.stringify(tofind["id"]));
+              if (tofind["Catagory"] == "Buyer") {
+            location.href = "index.logi.html?user="+ getUserId;}
+
+            else {
+              location.href  = "../pages/index2.html"
+            }
+          } 
+
+
+            // if (tofind["Catagory"] == "Sellar") {
+            // location.href = "sellar-form.html";
+            // let check = false
+          
+          // let mail = JSON.parse(localStorage.getItem("local"))
+          // let get_data = mail.find(function(l){
+          //   let findEmail = l["email"] 
+          //   if(findEmail== email1){
+          //             check = true
+          //   }
+          // }) 
+
+          
+        
+         
+
+          // } else{
+          //   window.location.href = "index.logi.html";
+          // }  
+          // let mail = JSON.parse(localStorage.getItem("details"));
+          // let local = JSON.parse(localStorage.getItem("local"));
+          // let get_data = local.find(function (L) {
+          //   return L.email == mail;
+
+        
+
+        
+  
+        }
+      })
+         
+      </script>
+    
+  </body>
+</html>

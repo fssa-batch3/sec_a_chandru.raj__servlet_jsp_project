@@ -1,0 +1,18 @@
+form {
+  background-color: antiquewhite;
+  width: 50%;
+  height: 700px;
+  margin-left: 350px;
+  margin-top: 100px;
+}
+.contact-h1 {
+  text-align: center;
+}
+.img-url {
+  margin-left: 10px;
+  margin-top: 50px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  width: 230px;
+}

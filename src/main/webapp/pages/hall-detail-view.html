@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="../assets/css/halls.css" /> -->
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/hall-detail.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <a href="#">
+            <img alt="image" src="../assets/images/Redefine.png" />
+          </a>
+        </div>
+
+        <ul>
+          <li>
+            <a href="../pages/about.html">About Us</a>
+          </li>
+          <li>
+            <a href="../pages/userprofile.html">Profile</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="container">
+        <div class="card">
+          <div class="name" id="name">Chan Hall</div>
+          <img
+            id="hall-img"
+            src="../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg"
+            alt="image"
+          />
+          <p class="capacity" id="capacity">Capacity</p>
+        </div>
+        <div class="address">
+          <h2>Address</h2>
+          <div class="add">
+            <p id="location">
+              1/2, Kumar st, checkpost, Velacher, Chennai-600042
+            </p>
+          </div>
+          <div class="pricing">
+            <h2>Pricing</h2>
+            <p id="price">15000 Perday rent</p>
+          </div>
+          <div class="btn">
+            <!-- <button type="submit" class="btn5">View contact</button> -->
+
+            <button type="submit" id="btn0" class="btn5">
+              Check Availibilty
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="grid-container">
+          <div class="images">
+            <img
+              src="../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg"
+              alt="image"
+              id="img1"
+            />
+          </div>
+          <div class="images">
+            <img
+              src="../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg"
+              alt="image"
+              id="img2"
+            />
+          </div>
+          <div class="images">
+            <img
+              src="../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg"
+              alt="image"
+              id="img3"
+            />
+          </div>
+          <div class="images">
+            <img
+              src="../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg"
+              alt="image"
+              id="img4"
+            />
+          </div>
+          <div class="images">
+            <img
+              src="../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg"
+              alt="image"
+              id="img5"
+            />
+          </div>
+          <div class="images">
+            <img
+              src="../assets/images/festive-table-restaurant-is-decorated-with-candles-flowers.jpg"
+              alt="image"
+              id="img6"
+            />
+          </div>
+        </div>
+        <div class="btn" id="hide1" style="display: none">
+          <a type="submit" class="btn5" id="btn1">Edit</a>
+          <button type="submit" class="btn5">Delete</button>
+          <button type="submit" class="btn5">Back</button>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      let url = window.location.search;
+
+      let urlParams = new URLSearchParams(url);
+
+      let getid = urlParams.get("id");
+      console.log(getid);
+
+      let halls = JSON.parse(localStorage.getItem("halls"));
+      let currentUserId = JSON.parse(localStorage.getItem("details"));
+      // let filteredHalls = halls.filter((F) => F.ownerId == currentUserId);
+      // console.log(filteredHalls);
+      let user = JSON.parse(localStorage.getItem("local"));
+      let findUser = user.find((hall) => hall.id == currentUserId);
+      console.log(findUser);
+
+      let findhalls = halls.find((hall) => hall.hallId == getid);
+      console.log(findhalls);
+      console.log(findUser["Catagory"]);
+
+      if (findUser["Catagory"] == "Sellar") {
+        document.getElementById("hide1").style.display = "inline-block";
+      }
+
+      document.getElementById("hall-img").src = findhalls.hallImageUrl;
+      document.getElementById("name").innerText = findhalls.hallName;
+      document.getElementById("capacity").innerText =
+        "Capacity : " + findhalls.capacity;
+      document.getElementById("location").innerText = findhalls.location;
+      document.getElementById("price").innerText =
+        "Pricing :" + findhalls.price;
+
+      document.getElementById("img1").src = findhalls.parkingImageUrl;
+      document.getElementById("img2").src = findhalls.bridgeImageUrl;
+      document.getElementById("img3").src = findhalls.dininghallImageurl;
+      document.getElementById("img4").src = findhalls.groomImageUrl;
+      document.getElementById("img5").src = findhalls.hallImageUrl;
+
+      let inputButton = document.querySelector("#btn0");
+
+      document.getElementById("btn1").href =
+        "edit-form.html?id=" + findhalls["hallId"];
+
+      inputButton.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        let dateInput = document.createElement("input");
+        dateInput.id = "dateid";
+        dateInput.setAttribute("class", "date-input");
+        dateInput.setAttribute("type", "date");
+
+        document.querySelector(".btn").append(dateInput);
+        let pathTo = document.createElement("a");
+        pathTo.href = "../pages/hall-booking.html";
+
+        let submitButton = document.createElement("button");
+        submitButton.id = "submitForm";
+        submitButton.setAttribute("class", "submit-button");
+        submitButton.innerHTML = "Submit";
+        submitButton.setAttribute("onclick", "getDate()");
+        pathTo.append(submitButton);
+
+        document.querySelector(".btn").append(pathTo);
+      });
+
+      // document.getElementById("img6").src = findhalls.hallImageUrl;
+
+      function getDate() {
+        let dateInputValue = document.querySelector(".date-input").value;
+
+        if (dateInputValue == null || dateInputValue == undefined) {
+          alert("Click some date");
+          return;
+        }
+        let data = {
+          requestdate: dateInputValue,
+          hallId: findhalls["hallId"],
+          ownerId: findhalls["ownerId"],
+        };
+
+        // localStorage.setItem("request", JSON.stringify(request));
+      }
+
+      // document.
+    </script>
+  </body>
+</html>

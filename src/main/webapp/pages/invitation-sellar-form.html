@@ -1,0 +1,114 @@
+<!DOCTYPE html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../assets/css/sellar-form.css" />
+  <title>Document</title>
+</head>
+<body>
+  <form id="form">
+    <div class="inputBox">
+      <input
+        id="shopimage"
+        type="text"
+        value="../assets/images/set_collection_luxury_wedding_invitation_cards_template.jpg"
+        name=""
+      />
+      <span>Shop Image Url</span>
+    </div>
+    <div class="inputBox">
+      <input
+        id="sample1"
+        type="text"
+        value="../assets/images/set_collection_luxury_wedding_invitation_cards_template.jpg"
+        name=""
+      />
+      <span>Sample Model 1 Url</span>
+    </div>
+    <div class="inputBox">
+      <input
+        id="sample2"
+        type="text"
+        value="../assets/images/set_collection_luxury_wedding_invitation_cards_template.jpg"
+        name=""
+      />
+      <span>Sample Model 2 Url</span>
+    </div>
+    <div class="inputBox">
+      <input
+        id="sample3"
+        type="text"
+        value="../assets/images/set_collection_luxury_wedding_invitation_cards_template.jpg"
+        name=""
+      />
+      <span>Sample Model 3 Url</span>
+    </div>
+
+    <div class="inputBox">
+      <input id="shopname" value="test invitationCards" type="text" name="" />
+      <span>Shop Name</span>
+    </div>
+    <!-- <div class="inputBox">
+      <input id="capability" type="number" value="1000" name="" />
+      <span>capability</span>
+    </div>
+    <div class="inputBox">
+      <input id="price" type="number" value="12500" name="" />
+      <span>Pricing</span>
+    </div> -->
+    <div class="inputBox">
+      <input id="location" type="text" value="chennai" name="" />
+      <span>Location</span>
+    </div>
+    <div class="inputBox">
+      <input id="contact" type="number" value="9876543210" required />
+      <span>Contact</span>
+    </div>
+
+    ​
+    <button type="submit" class="btn5">Send</button>
+  </form>
+</body>
+<script>
+  document.getElementById("form").addEventListener("submit", function (event) {
+    event.preventDefault();
+    if (document.getElementById("contact").value.length != 10) {
+      return alert("Contact should have only 10 charecters");
+    }
+    let shopimage = document.getElementById("shopimage").value;
+    let sample1 = document.getElementById("sample1").value;
+    let sample2 = document.getElementById("sample2").value;
+    let sample3 = document.getElementById("sample3").value;
+    let shopname = document.getElementById("shopname").value;
+    let location = document.getElementById("location").value;
+    let contact = document.getElementById("contact").value;
+
+    let ownerId = JSON.parse(localStorage.getItem("details"));
+    let pressId = Date.now();
+
+    let printingpress = {
+      shopimage,
+      sample1,
+      sample2,
+      sample3,
+      shopname,
+      location,
+      contact,
+      pressId,
+    };
+
+    let all = [];
+    if (localStorage.getItem("printingpress") != null) {
+      all = JSON.parse(localStorage.getItem("printingpress"));
+      // console.log(all);
+    }
+    all.push(printingpress);
+    let allstr = JSON.stringify(all);
+    localStorage.setItem("printingpress", allstr);
+    admin_update();
+  });
+  function admin_update() {
+    location.href = "index2.html";
+  }
+</script>
