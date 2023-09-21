@@ -1,6 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+ <%@ page import="java.util.List"%>  
+ <%@ page import="com.fssa.project.model.Hall"%>
+ <% 
+ Hall list = (Hall)request.getAttribute("updatehall");
+ %>
+ 
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="ISO-8859-1">
     <title>Hall Registration</title>
     <style>
@@ -54,7 +63,7 @@ input[type="submit"] {
     <h1>Hall Registration</h1>
     <form action="CreateHalls" method="post">
         <label for="hallName">Hall Name:</label>
-        <input type="text" id="hallName" name="hallName" required><br>
+        <input type="text" id="hallName" name="hallName" value=<%= list.getHallName() %> required><br>
 
         <label for="hallLocation">Hall Location:</label>
         <input type="text" id="hallLocation" name="hallLocation" required><br>

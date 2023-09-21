@@ -58,10 +58,11 @@ Hall display = (Hall) request.getAttribute("Hall");
 				<div class="btn">
 					<!-- <button type="submit" class="btn5">View contact</button> -->
 
-					<button type="submit" id="btn0" class="btn5">
-						Update</button>
-						<button type="submit" id="btn0" class="btn5">
-						Delete</button>
+					<a href="UpdateHallServlet?id=<%=display.getHallId()%>"><button type="submit" id="btn0" class="btn5" >
+						Update</button></a>
+						<a><button type="submit" id="btn0" class="btn5">
+						Delete</button></a>
+						
 				</div>
 			</div>
 		</section>
