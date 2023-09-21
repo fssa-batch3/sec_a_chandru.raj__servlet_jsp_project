@@ -66,37 +66,37 @@ input[type="submit"] {
         <input type="text" id="hallName" name="hallName" value=<%= list.getHallName() %> required><br>
 
         <label for="hallLocation">Hall Location:</label>
-        <input type="text" id="hallLocation" name="hallLocation" required><br>
+        <input type="text" id="hallLocation" name="hallLocation" value=<%= list.getHallLocation() %> required><br>
 
         <label for="mobileNumber">Mobile Number:</label>
-        <input type="text" id="mobileNumber" name="mobileNumber" required><br>
+        <input type="text" id="mobileNumber" name="mobileNumber" value=<%= list.getMobileNumber() %> required><br>
         
          <label for="capacity">Capacity:</label>
-        <input type="text" id="capacity" name="capacity" required><br>
+        <input type="text" id="capacity" name="capacity" value=<%= list.getCapacity() %> required><br>
         
          <label for="pricing">Price:</label>
-        <input type="text" id="pricing" name="pricing" required><br>
+        <input type="text" id="pricing" name="pricing" value=<%= list.getPricing() %> required><br>
         
         <label for="image1">Image URL 1:</label>
-        <input type="url" id="image1" name="url" pattern="https?://.+" title="Please enter a valid image URL" required><br>
+        <input type="url" id="image1" name="url" value=<%= list.getUrl() %> pattern="https?://.+" title="Please enter a valid image URL"><br>
 
         <label for="image2">Image URL 2:</label>
-        <input type="url" id="image2" name="url1" pattern="https?://.+" title="Please enter a valid image URL" required><br>
+        <input type="url" id="image2" name="url1" value=<%= list.getUrl1() %> pattern="https?://.+" title="Please enter a valid image URL"><br>
 
         <label for="image3">Image URL 3:</label>
-        <input type="url" id="image3" name="url2" pattern="https?://.+" title="Please enter a valid image URL" required><br>
+        <input type="url" id="image3" name="url2" value=<%= list.getUrl2() %> pattern="https?://.+" title="Please enter a valid image URL"><br>
 
         <label for="image4">Image URL 4:</label>
-        <input type="url" id="image4" name="url3" pattern="https?://.+" title="Please enter a valid image URL" required><br>
+        <input type="url" id="image4" name="url3" value=<%= list.getUrl3() %> pattern="https?://.+" title="Please enter a valid image URL"><br>
 
         <label for="image5">Image URL 5:</label>
-        <input type="url" id="image5" name="url4" pattern="https?://.+" title="Please enter a valid image URL" required><br>
+        <input type="url" id="image5" name="url4" value=<%= list.getUrl4() %> pattern="https?://.+" title="Please enter a valid image URL"><br>
 
         <label for="image6">Image URL 6:</label>
-        <input type="url" id="image6" name="url5" pattern="https?://.+" title="Please enter a valid image URL" required><br>
+        <input type="url" id="image6" name="url5" value=<%= list.getUrl5() %> pattern="https?://.+" title="Please enter a valid image URL"><br>
 
         <label for="image7">Image URL 7:</label>
-        <input type="url" id="image7" name="url6" pattern="https?://.+" title="Please enter a valid image URL" required><br>
+        <input type="url" id="image7" name="url6" value=<%= list.getUrl6() %> pattern="https?://.+" title="Please enter a valid image URL"><br>
         
         <input type="submit" value="Register Hall">
     </form>

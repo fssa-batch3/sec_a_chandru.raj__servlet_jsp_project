@@ -42,7 +42,7 @@ public class UpdateHallServlet extends HttpServlet {
         String hallLocation = request.getParameter("hallLocation");
         String pricing = request.getParameter("pricing");
         String capacity = request.getParameter("capacity");
-        
+        String mobileNumber = request.getParameter("mobileNumber");
         String url = request.getParameter("url");
         String url1 = request.getParameter("url1");
         
@@ -52,7 +52,7 @@ public class UpdateHallServlet extends HttpServlet {
         String url5 = request.getParameter("url5");
         String url6 = request.getParameter("url6");
         
-        Hall updatedHall = new Hall(hallId, hallName, hallLocation, pricing, capacity, url, url1, url2, url3, url4, url, url5, url6);
+        Hall updatedHall = new Hall(hallId, hallName, hallLocation, pricing, mobileNumber, capacity, url, url1, url2, url3, url4, url5, url6);
 
         RequestDispatcher dispatcher = null;
 
