@@ -33,7 +33,7 @@ public class ListHallsServlet extends HttpServlet {
 
             // Set the list of halls as an attribute in the request
             request.setAttribute("hallList", hallList);
-            
+                 
             System.out.println("list1");
 
             // Forward the request to the JSP page for rendering

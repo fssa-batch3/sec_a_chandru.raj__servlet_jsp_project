@@ -6,7 +6,7 @@
 <%@ page import="java.util.List"%>
 <%
 Hall display = (Hall) request.getAttribute("Hall");
-out.println(display);
+
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -99,10 +99,6 @@ out.println(display);
 						alt="image" id="img6" />
 				</div>
 			</div>
-			<div class="btn" id="hide1" style="display: none">
-				<a type="submit" class="btn5" id="btn1">Edit</a>
-				<button type="submit" class="btn5">Delete</button>
-				<button type="submit" class="btn5">Back</button>
-			</div>
+			
 		</section>
 	</main>

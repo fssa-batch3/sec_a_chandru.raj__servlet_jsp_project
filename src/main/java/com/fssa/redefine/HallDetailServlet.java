@@ -21,7 +21,7 @@ public class HallDetailServlet extends HttpServlet {
         try {
             // Get the hall ID from the request parameter
             long hallId = Long.parseLong(request.getParameter("id"));
-
+                              
             // Retrieve the hall details by ID from the service
             HallService hallService = new HallService();
             Hall hall = hallService.getHallByIdLong(hallId);
