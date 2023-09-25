@@ -60,8 +60,8 @@ input[type="submit"] {
     </style>
 </head>
 <body>
-    <h1>Hall Registration</h1>
-    <form action="CreateHalls" method="post">
+    <h1>Hall Upadte / Delete</h1>
+    <form action="UpdateHallServlet" method="post">
         <label for="hallName">Hall Name:</label>
         <input type="text" id="hallName" name="hallName" value=<%= list.getHallName() %> required><br>
 
@@ -98,7 +98,10 @@ input[type="submit"] {
         <label for="image7">Image URL 7:</label>
         <input type="url" id="image7" name="url6" value=<%= list.getUrl6() %> pattern="https?://.+" title="Please enter a valid image URL"><br>
         
-        <input type="submit" value="Register Hall">
+        <input type="hidden" id="id" name="id" value=<%= list.getHallId() %> ><br>
+        
+         <button>Update Hall Details</button>
+        
     </form>
 </body>
 </html>

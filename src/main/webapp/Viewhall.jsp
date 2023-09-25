@@ -2,10 +2,19 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="com.fssa.project.model.Hall"%>
+<%@ page import="com.fssa.project.model.User"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.List"%>
 <%
 Hall display = (Hall) request.getAttribute("Hall");
+String userType = (String) session.getAttribute("userType"); 
+String email = (String) session.getAttribute("loggedUser");
+System.out.println(email);
+System.out.println(display.getEmail());
+
+
+
+
 
 %>
 <!DOCTYPE html>
@@ -56,14 +65,34 @@ Hall display = (Hall) request.getAttribute("Hall");
 					<p id="price"><%=display.getCapacity() %></p>
 				</div>
 				<div class="btn">
-					<!-- <button type="submit" class="btn5">View contact</button> -->
+				<%
+if (userType.equals("Admin") && email.equals(display.getEmail())) {
+%>
 
-					<a href="UpdateHallServlet?id=<%=display.getHallId()%>"><button type="submit" id="btn0" class="btn5" >
-						Update</button></a>
-						<a><button type="submit" id="btn0" class="btn5">
-						Delete</button></a>
-						
-				</div>
+    <a href="UpdateHallServlet?id=<%= display.getHallId() %>">
+        <button type="button" id="btnUpdate" class="btn5">Update</button>
+    </a>
+    <a href="DeleteHallServlet?id=<%= display.getHallId() %>">
+        <button type="button" id="btnDelete" class="btn5">Delete</button>
+    </a>
+    
+     <a href="ListBookingsByHallServlet?id=<%= display.getHallId() %>">
+        <button type="button" id="btnDelete" class="btn5">List</button>
+    </a>
+<%
+} else if (userType.equals("User") && (email == null || display.getEmail() == null || !email.equals(display.getEmail()))) {
+%>
+    <a href="HallDetailServlet1?id=<%= display.getHallId() %>">
+        <button type="button" id="btnBookNow" class="btn5">Book Now</button>
+    </a>
+<%
+}
+%>
+
+
+
+
+    </div>
 			</div>
 		</section>
 
@@ -102,4 +131,8 @@ Hall display = (Hall) request.getAttribute("Hall");
 			</div>
 			
 		</section>
+		
+		
 	</main>
+	</body>
+	</html>

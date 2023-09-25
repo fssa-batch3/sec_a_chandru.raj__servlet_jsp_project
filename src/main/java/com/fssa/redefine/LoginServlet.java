@@ -2,6 +2,8 @@ package com.fssa.redefine;
 
 import java.io.IOException;
 
+
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,27 +39,26 @@ public class LoginServlet extends HttpServlet {
 
 			if (userService.loginUser(user)) {
 
-				//RequestDispatcher patcher = request.getRequestDispatcher("home.jsp");
 				HttpSession session = request.getSession();
    
 				session.setAttribute("loggedUser", email);
-            
+				 session.setAttribute("loggedUser1", user.getUserId());
+				  session.setAttribute("user", user); 
+				  session.setAttribute("userId",user.getUserId());
+                    System.out.println(user.getUserId());                    
 				try {
-					int type = UserDAO.findTypeByEmail(email);
+				    int type = UserDAO.findTypeByEmail(email);
 
-					if (type == 1) {
-						response.sendRedirect(request.getContextPath() + "home.jsp");
-					} else if (type == 0) {
-						response.sendRedirect("userhome.jsp");
-					}
+				    if (type == 1) {
+				        session.setAttribute("userType", "Admin");
+				        response.sendRedirect(request.getContextPath() + "/home.jsp");
+				    } else if (type == 0) {
+				        session.setAttribute("userType", "User"); 
+				        response.sendRedirect("userhome.jsp");
+				    }
 				} catch (DAOException e) {
-					// Handle the exception (e.g., log it or show an error message)
-					e.printStackTrace();
-				}		
-				
-				
-				//patcher.forward(request, response);
-
+				    e.printStackTrace();
+				}
 			}else {
 				response.getWriter().print("Invalid email or password");
 			}

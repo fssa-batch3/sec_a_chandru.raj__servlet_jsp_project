@@ -309,7 +309,7 @@ a {
           src="./assets/images/Redefine__2_-removebg-preview.png"
         />
       </div>
-
+   
       <div class="main">
         <div class="hall-h1"><h1>HALLS</h1></div>
         <div class="halls">
@@ -321,7 +321,7 @@ a {
           </div>
         </div>
         <div class="adiv">
-          <a class="a" href="../pages/cattering.html">View More</a>
+          <a class="a" href="UserHallListServlet">View More</a>
         </div>
       </div>
       <div class="main">

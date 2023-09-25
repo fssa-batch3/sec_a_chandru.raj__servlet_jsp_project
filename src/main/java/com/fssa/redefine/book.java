@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/HallDetailServlet")
-public class HallDetailServlet extends HttpServlet {
+@WebServlet("/HallDetailServlet1")
+public class book extends HttpServlet {
     private static final long serialVersionUID = 1L;
                 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -33,7 +33,7 @@ public class HallDetailServlet extends HttpServlet {
             
 
             // Forward to the hall detail view (assuming you have a "detail.jsp" page)
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/Viewhall.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/book.jsp");
             System.out.println("view");
             request.setAttribute("Hall", hall);
             System.out.println("hall");
