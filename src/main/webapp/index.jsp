@@ -295,10 +295,10 @@ a {
             <a href="./about.html">About Us</a>
           </li> -->
           <li>
-            <a href="./signup.html">Sign up</a>
+            <a href="./signup.jsp">Sign up</a>
           </li>
           <li>  
-            <a href="./login.html">Login</a>
+            <a href="./login.jsp">Login</a>
           </li>
 
           <!-- <li>

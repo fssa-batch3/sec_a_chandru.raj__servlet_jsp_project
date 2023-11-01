@@ -2,8 +2,6 @@ package com.fssa.redefine;
 
 import java.io.IOException;
 
-
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,38 +32,37 @@ public class LoginServlet extends HttpServlet {
 		User user = new User();
 		user.setEmail(email);
 		user.setPassword(password);
-     
+
 		try {
 
 			if (userService.loginUser(user)) {
 
 				HttpSession session = request.getSession();
-   
-				session.setAttribute("loggedUser", email);
-				 session.setAttribute("loggedUser1", user.getUserId());
-				  session.setAttribute("user", user); 
-				  session.setAttribute("userId",user.getUserId());
-                    System.out.println(user.getUserId());                    
-				try {
-				    int type = UserDAO.findTypeByEmail(email);
 
-				    if (type == 1) {
-				        session.setAttribute("userType", "Admin");
-				        response.sendRedirect(request.getContextPath() + "/home.jsp");
-				    } else if (type == 0) {
-				        session.setAttribute("userType", "User"); 
-				        response.sendRedirect("userhome.jsp");
-				    }
+				session.setAttribute("loggedUser", email);
+				session.setAttribute("loggedUser1", user.getUserId());
+				session.setAttribute("user", user);
+				session.setAttribute("userId", user.getUserId());
+				System.out.println(user.getUserId());
+				try {
+					int type = UserDAO.findTypeByEmail(email);
+
+					if (type == 1) {
+						session.setAttribute("userType", "Admin");
+						response.sendRedirect(request.getContextPath() + "/home.jsp");
+					} else if (type == 0) {
+						session.setAttribute("userType", "User");
+						response.sendRedirect("userhome.jsp");
+					}
 				} catch (DAOException e) {
-				    e.printStackTrace();
+					response.sendRedirect(request.getContextPath() + "/login.jsp?ErrorMessage=" + e.getMessage());
 				}
-			}else {
-				response.getWriter().print("Invalid email or password");
+			} else {
+				response.sendRedirect(request.getContextPath() + "/login.jsp?ErrorMessage=invalid login credentials");
 			}
-			
 
 		} catch (ServiceException e) {
-			e.printStackTrace();
+			response.sendRedirect(request.getContextPath() + "/login.jsp?ErrorMessage=" + e.getMessage());
 		}
 
 	}

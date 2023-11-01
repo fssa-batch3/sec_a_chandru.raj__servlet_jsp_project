@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -53,9 +54,22 @@ public class RegisterServlet extends HttpServlet {
 				response.getWriter().write("User registration successful!");
 				response.sendRedirect("login.html");
 			} catch (ServiceException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			//	response.sendRedirect(request.getContextPath() + "/signup.jsp?ErrorMessage=" + e.getMessage());
+				//e.getMessage();
+				
+				String msg = e.getMessage();
+				//String[] error = msg.split(":");
+//				request.setAttribute("email", email);
+//				request.setAttribute("name", name);
+//				request.setAttribute("password",password);
+//				request.setAttribute("phoneNumber", phoneNumber);
+//				request.setAttribute("type", type);
+				
+				RequestDispatcher patcher = request.getRequestDispatcher("/signup.jsp?ErrorMessage=" + msg);
+				patcher.forward(request, response);
 			}
+            
+            
             
         } catch (DateTimeParseException e) {
             response.getWriter().write("Invalid date format for date of birth.");

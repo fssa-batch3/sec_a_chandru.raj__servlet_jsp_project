@@ -286,9 +286,9 @@ a {
           <li>
             <a href="../pages/login.html">Login</a>
           </li> -->
-          <li>
-            <a href="../pages/userprofile.html">Profile</a>
-          </li>
+          <!-- <li>
+           <a href="../pages/userprofile.html">Profile</a>
+          </li> -->
         </ul>
         <!-- <form action="./pages/sign-up.html">
           <button class="signin">Sign Up</button>

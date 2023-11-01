@@ -37,29 +37,14 @@ public class CreateHallServlet extends HttpServlet {
         String url5 = request.getParameter("url5");
         String url6 = request.getParameter("url6");
 
-        try {
-            HallValidator.isValidHallName(hallName);
-            HallValidator.isValidLocation(hallLocation);
-            HallValidator.isValidMobileNumber(mobileNumber);
-            HallValidator.isValidEmail(email); 
-            HallValidator.isValidImageURL(url);
-            HallValidator.isValidCapacity(capacity);
-            HallValidator.isValidPricing(pricing);
-        } catch (Exception e) {
-            e.printStackTrace();
-            response.sendRedirect("error.jsp");
-            return;
-        }
-
         Hall hall = new Hall(hallName, hallLocation, mobileNumber, capacity, pricing, email, url, url1, url2, url3, url4, url5, url6);
-
         HallService hallService = new HallService();
         try {
             hallService.createHall(hall);
             response.sendRedirect("home.jsp");
         } catch (ServiceException e) {
             e.printStackTrace();
-            response.sendRedirect("error.jsp");
+            response.sendRedirect(request.getContextPath() + "/hall.jsp?ErrorMessage=" + e.getMessage());
         }
     }
 }

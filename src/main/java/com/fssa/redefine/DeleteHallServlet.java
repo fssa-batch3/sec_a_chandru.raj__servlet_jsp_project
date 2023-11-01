@@ -37,7 +37,7 @@ public class DeleteHallServlet extends HttpServlet {
 
 			try {
 				hallService.deleteHall(hall_id);
-				response.sendRedirect("GetAllOwnProductsServlet");
+				response.sendRedirect("listHallsServlet");
 			} catch (ServiceException e) {
 				e.printStackTrace(); 
 			}

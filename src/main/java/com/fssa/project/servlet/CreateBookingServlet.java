@@ -60,7 +60,7 @@ public class CreateBookingServlet extends HttpServlet {
             	 String errorMessage = "The date is already booked by someone.";
             	
 
-                 response.sendRedirect(request.getContextPath()+"error9.jsp" + hallId );
+                 response.sendRedirect(request.getContextPath()+"/error9.jsp" );
                  return;
             }
 

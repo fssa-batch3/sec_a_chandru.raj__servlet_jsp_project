@@ -4,6 +4,7 @@
  <%@ page import="com.fssa.project.model.Hall"%>
  <% 
  Hall list = (Hall)request.getAttribute("updatehall");
+ String email1 = (String) session.getAttribute("loggedUser");
  %>
  
 <!DOCTYPE html>
@@ -63,7 +64,7 @@ input[type="submit"] {
     <h1>Hall Upadte / Delete</h1>
     <form action="UpdateHallServlet" method="post">
         <label for="hallName">Hall Name:</label>
-        <input type="text" id="hallName" name="hallName" value=<%= list.getHallName() %> required><br>
+        <input type="text" id="hallName" name="hallName" value="<%=list.getHallName()%>" required><br>
 
         <label for="hallLocation">Hall Location:</label>
         <input type="text" id="hallLocation" name="hallLocation" value=<%= list.getHallLocation() %> required><br>
@@ -99,6 +100,8 @@ input[type="submit"] {
         <input type="url" id="image7" name="url6" value=<%= list.getUrl6() %> pattern="https?://.+" title="Please enter a valid image URL"><br>
         
         <input type="hidden" id="id" name="id" value=<%= list.getHallId() %> ><br>
+        <input type="text" id="email" name="email" value="<%= session.getAttribute("loggedUser") %>"><br>
+
         
          <button>Update Hall Details</button>
         

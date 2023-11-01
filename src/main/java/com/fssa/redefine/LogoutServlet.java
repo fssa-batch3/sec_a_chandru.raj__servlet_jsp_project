@@ -26,7 +26,7 @@ public class LogoutServlet extends HttpServlet {
 
 			// invalidate removes all the session attributes
 			session.invalidate();
-			response.sendRedirect("login.html");
+			response.sendRedirect("login.jsp");
      
 		}
 		else {

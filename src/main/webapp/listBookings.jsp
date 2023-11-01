@@ -3,6 +3,29 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.List"%>
 <!DOCTYPE html>
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: black;
+        color: goldenrod;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #333; /* Dark gray background for headers */
+        font-weight: bold;
+    }
+
+    tr:hover {
+        background-color: #444; /* Slightly darker gray for hover effect */
+    }
+</style>
 <html lang="en">
 <head>
     <!-- Your head section here -->
